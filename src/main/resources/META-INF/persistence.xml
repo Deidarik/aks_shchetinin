@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+                                 https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <persistence-unit name="vocabPU" transaction-type="JTA">
+        <jta-data-source>java:jboss/datasources/VocabDS</jta-data-source>
+
+        <class>com.vocab.entity.Category</class>
+        <class>com.vocab.entity.Word</class>
+        <class>com.vocab.entity.Translation</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <!-- Таблицы уже созданы нашим SQL-скриптом, ничего не пересоздаём -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

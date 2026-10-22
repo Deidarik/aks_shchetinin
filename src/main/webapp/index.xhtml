@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:ui="jakarta.faces.facelets">
+
+<h:head>
+    <title>Английский словарь</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 24px; color: #222; }
+        h1 { margin-bottom: 4px; }
+        h2 { margin-top: 28px; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+        table { border-collapse: collapse; margin: 10px 0 16px; width: 100%; }
+        th, td { border: 1px solid #bbb; padding: 8px 10px; text-align: left; }
+        th { background: #f0f0f0; }
+        .form-box { background: #f9f9f9; padding: 15px; border-radius: 5px; border: 1px solid #ddd; margin-bottom: 20px; }
+        .pagination { margin-top: 15px; text-align: center; }
+        .pagination button { margin: 0 5px; padding: 5px 10px; cursor: pointer; }
+        .error { color: #b00020; font-weight: bold; }
+    </style>
+</h:head>
+
+<h:body>
+    <h1>Учет английских слов</h1>
+    <h:messages styleClass="error" layout="table" globalOnly="true"/>
+
+    <!-- ПОИСК -->
+    <h:form id="searchForm" style="margin-bottom: 20px;">
+        <h:panelGrid columns="3" cellpadding="5">
+            <h:outputLabel for="searchInput" value="Поиск по слову:" style="font-weight: bold;"/>
+            <h:inputText id="searchInput" value="#{vocab.searchQuery}" placeholder="Например: record" style="width: 250px;"/>
+            <h:panelGroup>
+                <h:commandButton value="Найти" action="#{vocab.search}" style="margin-right: 5px;"/>
+                <h:commandButton value="Сбросить" action="#{vocab.resetSearch}"/>
+            </h:panelGroup>
+        </h:panelGrid>
+    </h:form>
+
+    <!-- ТАБЛИЦА СЛОВ -->
+    <h2>Слова (Всего: #{vocab.totalElements})</h2>
+    <h:form id="wordTableForm">
+        <h:dataTable value="#{vocab.words}" var="w" rendered="#{not empty vocab.words}">
+            <h:column><f:facet name="header">Слово</f:facet>#{w.englishWord}</h:column>
+            <h:column><f:facet name="header">Транскрипция</f:facet>#{w.phonetics}</h:column>
+            <h:column><f:facet name="header">Часть речи</f:facet>#{w.partOfSpeech}</h:column>
+            <h:column><f:facet name="header">Категория</f:facet>#{w.category.name}</h:column>
+            <h:column>
+                <f:facet name="header">Значения и примеры</f:facet>
+                <ui:repeat value="#{w.translations}" var="t">
+                    <h:outputText value="#{t.meaning}" style="font-weight: bold; color: #0056b3;"/>
+                    <br/>
+                    <h:outputText value="Пример: #{t.example}"
+                                  style="font-style: italic; color: #555; font-size: 0.9em; margin-left: 10px;"
+                                  rendered="#{not empty t.example}"/>
+                    <br/><br/>
+                </ui:repeat>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Действия</f:facet>
+                <h:commandButton value="Редактировать" action="#{vocab.editWord(w.id)}"/>
+                <h:commandButton value="Удалить" action="#{vocab.deleteWord(w.id)}"
+                                 onclick="return confirm('Удалить слово и все его переводы?');"/>
+            </h:column>
+        </h:dataTable>
+        <h:outputText value="Слов не найдено" rendered="#{empty vocab.words}"/>
+
+        <!-- ПАГИНАЦИЯ -->
+        <h:panelGroup styleClass="pagination" rendered="#{vocab.totalPages > 1}">
+            <h:commandButton value="&lt; Назад" action="#{vocab.prevPage}" disabled="#{vocab.page == 1}"/>
+            <h:outputText value=" Страница #{vocab.page} из #{vocab.totalPages} " style="margin: 0 10px; font-weight: bold;"/>
+            <h:commandButton value="Вперед &gt;" action="#{vocab.nextPage}" disabled="#{vocab.page == vocab.totalPages}"/>
+        </h:panelGroup>
+    </h:form>
+    <h2>Категории</h2>
+    <h:form id="categoryTableForm">
+        <h:dataTable value="#{vocab.categories}" var="c" rendered="#{not empty vocab.categories}">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{c.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Название</f:facet>
+                #{c.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Описание</f:facet>
+                #{c.description}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Действия</f:facet>
+                <h:commandButton value="Редактировать" action="#{vocab.editCategory(c.id)}" style="margin-right: 5px;"/>
+                <h:commandButton value="Удалить" action="#{vocab.deleteCategory(c.id)}"
+                                 onclick="return confirm('Удалить категорию? (Не получится, если в ней есть слова)');"/>
+            </h:column>
+        </h:dataTable>
+        <h:outputText value="Категорий пока нет" rendered="#{empty vocab.categories}"/>
+    </h:form>
+
+    <h2>#{vocab.editingCategoryId != null ? 'Редактирование категории' : 'Новая категория'}</h2>
+    <h:form id="categoryForm" styleClass="form-box">
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel value="Название:"/>
+            <h:inputText value="#{vocab.categoryForm.name}" required="true" requiredMessage="Название обязательно"/>
+
+            <h:outputLabel value="Описание:"/>
+            <h:inputTextarea value="#{vocab.categoryForm.description}" rows="2" cols="40"/>
+        </h:panelGrid>
+
+        <div style="margin-top: 15px;">
+            <h:commandButton value="Сохранить" action="#{vocab.saveCategory}" style="padding: 8px 15px; font-weight: bold;"/>
+            <h:commandButton value="Отменить" action="#{vocab.cancelCategoryEdit}" immediate="true"
+                             rendered="#{vocab.editingCategoryId != null}" style="margin-left: 10px;"/>
+        </div>
+    </h:form>
+
+    <hr style="margin: 40px 0; border: 0; border-top: 2px solid #eee;"/>
+    <!-- ФОРМА ДОБАВЛЕНИЯ/РЕДАКТИРОВАНИЯ (СЛОВО + ПЕРЕВОД) -->
+    <h2>#{vocab.editingWordId != null ? 'Редактирование' : 'Новое слово'}</h2>
+    <h:form id="wordForm" styleClass="form-box">
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel value="Английское слово:"/>
+            <h:inputText value="#{vocab.wordForm.englishWord}" required="true" requiredMessage="Слово обязательно"/>
+
+            <h:outputLabel value="Транскрипция:"/>
+            <h:inputText value="#{vocab.wordForm.phonetics}" required="true" requiredMessage="Транскрипция обязательна"/>
+
+            <h:outputLabel value="Часть речи:"/>
+            <h:selectOneMenu value="#{vocab.wordForm.partOfSpeech}">
+                <f:selectItems value="#{vocab.partsOfSpeech}" var="p" itemLabel="#{p}" itemValue="#{p}"/>
+            </h:selectOneMenu>
+
+            <h:outputLabel value="Категория:"/>
+            <h:selectOneMenu value="#{vocab.categoryId}" required="true" requiredMessage="Выберите категорию">
+                <f:selectItem itemLabel="-- выберите --" itemValue="#{null}"/>
+                <f:selectItems value="#{vocab.categories}" var="c" itemLabel="#{c.name}" itemValue="#{c.id}"/>
+            </h:selectOneMenu>
+
+            <h:outputLabel value="Основной перевод:" style="font-weight: bold; color: #0056b3;"/>
+            <h:inputText value="#{vocab.primaryMeaning}" required="true" requiredMessage="Перевод обязателен при создании"/>
+
+            <h:outputLabel value="Пример использования:"/>
+            <h:inputTextarea value="#{vocab.primaryExample}" rows="2" cols="40"/>
+        </h:panelGrid>
+
+        <div style="margin-top: 15px;">
+            <h:commandButton value="Сохранить" action="#{vocab.saveWord}" style="padding: 8px 15px; font-weight: bold;"/>
+            <h:commandButton value="Отменить" action="#{vocab.cancelWordEdit}" immediate="true"
+                             rendered="#{vocab.editingWordId != null}" style="margin-left: 10px;"/>
+        </div>
+    </h:form>
+
+</h:body>
+</html>
