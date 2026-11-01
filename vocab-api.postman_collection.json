@@ -1,0 +1,801 @@
+{
+  "info": {
+    "_postman_id": "90547312-44c1-48b1-94ea-683ac5f430c6",
+    "name": "vocab-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43756775",
+    "_collection_link": "https://go.postman.co/collection/43756775-90547312-44c1-48b1-94ea-683ac5f430c6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "http://localhost:8080/api/words JSON",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/words",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "words"
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET \"http://localhost:8080/api/words\" \\\n  -H \"Accept: application/json\""
+      },
+      "response": [
+        {
+          "name": "http://localhost:8080/api/words JSON",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/words",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "words"
+              ]
+            }
+          },
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 01 Nov 2026 11:25:38 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"words\": [\n    {\n      \"id\": 4,\n      \"englishWord\": \"airport\",\n      \"phonetics\": \"[ˈeə.pɔːt]\",\n      \"partOfSpeech\": \"noun\",\n      \"categoryId\": 2,\n      \"categoryName\": \"Travel\",\n      \"translations\": [\n        {\n          \"meaning\": \"аэропорт\",\n          \"example\": \"The airport is far from the city.\"\n        }\n      ]\n    },\n    {\n      \"id\": 1,\n      \"englishWord\": \"apple\",\n      \"phonetics\": \"[ˈæp.əl]\",\n      \"partOfSpeech\": \"noun\",\n      \"categoryId\": 1,\n      \"categoryName\": \"Food\",\n      \"translations\": [\n        {\n          \"meaning\": \"яблоко\",\n          \"example\": \"I eat an apple every day.\"\n        }\n      ]\n    },\n    {\n      \"id\": 2,\n      \"englishWord\": \"banana\",\n      \"phonetics\": \"[bəˈnɑː.nə]\",\n      \"partOfSpeech\": \"noun\",\n      \"categoryId\": 1,\n      \"categoryName\": \"Food\",\n      \"translations\": [\n        {\n          \"meaning\": \"банан\",\n          \"example\": \"Bananas are yellow.\"\n        }\n      ]\n    },\n    {\n      \"id\": 10,\n      \"englishWord\": \"light\",\n      \"phonetics\": \"[laɪt]\",\n      \"partOfSpeech\": \"adjective\",\n      \"categoryId\": 4,\n      \"categoryName\": \"General\",\n      \"translations\": [\n        {\n          \"meaning\": \"лёгкий\",\n          \"example\": \"This bag is very light.\"\n        },\n        {\n          \"meaning\": \"светлый\",\n          \"example\": \"She has light hair.\"\n        }\n      ]\n    },\n    {\n      \"id\": 5,\n      \"englishWord\": \"meeting\",\n      \"phonetics\": \"[ˈmiː.tɪŋ]\",\n      \"partOfSpeech\": \"noun\",\n      \"categoryId\": 3,\n      \"categoryName\": \"Business\",\n      \"translations\": [\n        {\n          \"meaning\": \"встреча\",\n          \"example\": \"We have a meeting at 3 p.m.\"\n        },\n        {\n          \"meaning\": \"совещание\",\n          \"example\": \"The meeting lasted two hours.\"\n        }\n      ]\n    },\n    {\n      \"id\": 19,\n      \"englishWord\": \"nap\",\n      \"phonetics\": \"[НЭП]\",\n      \"partOfSpeech\": \"verb\",\n      \"categoryId\": 10,\n      \"categoryName\": \"Body\",\n      \"translations\": [\n        {\n          \"meaning\": \"Храпеть, спать\",\n          \"example\": \"When we were kids, we refused to nap during a sleepy hours in kindergarten\"\n        }\n      ]\n    },\n    {\n      \"id\": 6,\n      \"englishWord\": \"record\",\n      \"phonetics\": \"[ˈrek.ɔːd]\",\n      \"partOfSpeech\": \"noun\",\n      \"categoryId\": 4,\n      \"categoryName\": \"General\",\n      \"translations\": [\n        {\n          \"meaning\": \"запись\",\n          \"example\": \"She always kept a record of every expense.\"\n        },\n        {\n          \"meaning\": \"пластинка\",\n          \"example\": \"He bought an old record.\"\n        }\n      ]\n    },\n    {\n      \"id\": 7,\n      \"englishWord\": \"record\",\n      \"phonetics\": \"[rɪˈkɔːd]\",\n      \"partOfSpeech\": \"verb\",\n      \"categoryId\": 4,\n      \"categoryName\": \"General\",\n      \"translations\": [\n        {\n          \"meaning\": \"записывать\",\n          \"example\": \"Please record the interview.\"\n        }\n      ]\n    },\n    {\n      \"id\": 8,\n      \"englishWord\": \"run\",\n      \"phonetics\": \"[rʌn]\",\n      \"partOfSpeech\": \"verb\",\n      \"categoryId\": 4,\n      \"categoryName\": \"General\",\n      \"translations\": [\n        {\n          \"meaning\": \"бежать\",\n          \"example\": \"I run every morning.\"\n        },\n        {\n          \"meaning\": \"управлять (компанией)\",\n          \"example\": \"She runs a successful company.\"\n        }\n      ]\n    },\n    {\n      \"id\": 17,\n      \"englishWord\": \"sax\",\n      \"phonetics\": \"[s'aeks]\",\n      \"partOfSpeech\": \"noun\",\n      \"categoryId\": 6,\n      \"categoryName\": \"Music\",\n      \"translations\": [\n        {\n          \"meaning\": \"саксофон\",\n          \"example\": \"the musicaal instrument\"\n        }\n      ]\n    },\n    {\n      \"id\": 11,\n      \"englishWord\": \"swim\",\n      \"phonetics\": \"[swɪm]\",\n      \"partOfSpeech\": \"verb\",\n      \"categoryId\": 5,\n      \"categoryName\": \"Sports\",\n      \"translations\": [\n        {\n          \"meaning\": \"плавать\",\n          \"example\": \"I swim twice a week.\"\n        }\n      ]\n    },\n    {\n      \"id\": 3,\n      \"englishWord\": \"ticket\",\n      \"phonetics\": \"[ˈtɪk.ɪt]\",\n      \"partOfSpeech\": \"noun\",\n      \"categoryId\": 2,\n      \"categoryName\": \"Travel\",\n      \"translations\": [\n        {\n          \"meaning\": \"билет\",\n          \"example\": \"I need to buy a ticket.\"\n        },\n        {\n          \"meaning\": \"штраф\",\n          \"example\": \"He got a parking ticket.\"\n        }\n      ]\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "http://localhost:8080/api/words XML",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/xml"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/words",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "words"
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET \"http://localhost:8080/api/words\" \\\n  -H \"Accept: application/xml\""
+      },
+      "response": [
+        {
+          "name": "http://localhost:8080/api/words XML",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/words",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "words"
+              ]
+            }
+          },
+          "_postman_previewlanguage": "xml",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 01 Nov 2026 11:54:48 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "<wordList><word><id>4</id><englishWord>airport</englishWord><phonetics>[ˈeə.pɔːt]</phonetics><partOfSpeech>noun</partOfSpeech><categoryId>2</categoryId><categoryName>Travel</categoryName><translation><meaning>аэропорт</meaning><example>The airport is far from the city.</example></translation></word><word><id>1</id><englishWord>apple</englishWord><phonetics>[ˈæp.əl]</phonetics><partOfSpeech>noun</partOfSpeech><categoryId>1</categoryId><categoryName>Food</categoryName><translation><meaning>яблоко</meaning><example>I eat an apple every day.</example></translation></word><word><id>2</id><englishWord>banana</englishWord><phonetics>[bəˈnɑː.nə]</phonetics><partOfSpeech>noun</partOfSpeech><categoryId>1</categoryId><categoryName>Food</categoryName><translation><meaning>банан</meaning><example>Bananas are yellow.</example></translation></word><word><id>20</id><englishWord>kindle</englishWord><phonetics>[киндл]</phonetics><partOfSpeech>noun</partOfSpeech><categoryId>4</categoryId><categoryName>General</categoryName><translation><meaning>Свеча</meaning><example>You should keep in safe your kindle that is the only one.</example></translation></word><word><id>10</id><englishWord>light</englishWord><phonetics>[laɪt]</phonetics><partOfSpeech>adjective</partOfSpeech><categoryId>4</categoryId><categoryName>General</categoryName><translation><meaning>лёгкий</meaning><example>This bag is very light.</example></translation><translation><meaning>светлый</meaning><example>She has light hair.</example></translation></word><word><id>5</id><englishWord>meeting</englishWord><phonetics>[ˈmiː.tɪŋ]</phonetics><partOfSpeech>noun</partOfSpeech><categoryId>3</categoryId><categoryName>Business</categoryName><translation><meaning>встреча</meaning><example>We have a meeting at 3 p.m.</example></translation><translation><meaning>совещание</meaning><example>The meeting lasted two hours.</example></translation></word><word><id>19</id><englishWord>nap</englishWord><phonetics>[НЭП]</phonetics><partOfSpeech>verb</partOfSpeech><categoryId>10</categoryId><categoryName>Body</categoryName><translation><meaning>Храпеть, спать</meaning><example>When we were kids, we refused to nap during a sleepy hours in kindergarten</example></translation></word><word><id>6</id><englishWord>record</englishWord><phonetics>[ˈrek.ɔːd]</phonetics><partOfSpeech>noun</partOfSpeech><categoryId>4</categoryId><categoryName>General</categoryName><translation><meaning>запись</meaning><example>She always kept a record of every expense.</example></translation><translation><meaning>пластинка</meaning><example>He bought an old record.</example></translation></word><word><id>7</id><englishWord>record</englishWord><phonetics>[rɪˈkɔːd]</phonetics><partOfSpeech>verb</partOfSpeech><categoryId>4</categoryId><categoryName>General</categoryName><translation><meaning>записывать</meaning><example>Please record the interview.</example></translation></word><word><id>8</id><englishWord>run</englishWord><phonetics>[rʌn]</phonetics><partOfSpeech>verb</partOfSpeech><categoryId>4</categoryId><categoryName>General</categoryName><translation><meaning>бежать</meaning><example>I run every morning.</example></translation><translation><meaning>управлять (компанией)</meaning><example>She runs a successful company.</example></translation></word><word><id>17</id><englishWord>sax</englishWord><phonetics>[s'aeks]</phonetics><partOfSpeech>noun</partOfSpeech><categoryId>6</categoryId><categoryName>Music</categoryName><translation><meaning>саксофон</meaning><example>the musicaal instrument</example></translation></word><word><id>11</id><englishWord>swim</englishWord><phonetics>[swɪm]</phonetics><partOfSpeech>verb</partOfSpeech><categoryId>5</categoryId><categoryName>Sports</categoryName><translation><meaning>плавать</meaning><example>I swim twice a week.</example></translation></word><word><id>3</id><englishWord>ticket</englishWord><phonetics>[ˈtɪk.ɪt]</phonetics><partOfSpeech>noun</partOfSpeech><categoryId>2</categoryId><categoryName>Travel</categoryName><translation><meaning>билет</meaning><example>I need to buy a ticket.</example></translation><translation><meaning>штраф</meaning><example>He got a parking ticket.</example></translation></word></wordList>"
+        }
+      ]
+    },
+    {
+      "name": "http://localhost:8080/api/words/{id} JSON",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/words/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "words",
+            "1"
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET \"http://localhost:8080/api/words/1\" \\\n  -H \"Accept: application/json\""
+      },
+      "response": [
+        {
+          "name": "http://localhost:8080/api/words/{id} JSON",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/words/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "words",
+                "1"
+              ]
+            }
+          },
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 01 Nov 2026 11:26:02 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"id\": 1,\n  \"englishWord\": \"apple\",\n  \"phonetics\": \"[ˈæp.əl]\",\n  \"partOfSpeech\": \"noun\",\n  \"categoryId\": 1,\n  \"categoryName\": \"Food\",\n  \"translations\": [\n    {\n      \"meaning\": \"яблоко\",\n      \"example\": \"I eat an apple every day.\"\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "http://localhost:8080/api/words/{id}  XML",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/xml"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/words/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "words",
+            "1"
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET \"http://localhost:8080/api/words/1\" \\\n  -H \"Accept: application/xml\""
+      },
+      "response": [
+        {
+          "name": "http://localhost:8080/api/words/{id}  XML",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/words/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "words",
+                "1"
+              ]
+            }
+          },
+          "_postman_previewlanguage": "xml",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 01 Nov 2026 11:26:07 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "<WordDto><id>1</id><englishWord>apple</englishWord><phonetics>[ˈæp.əl]</phonetics><partOfSpeech>noun</partOfSpeech><categoryId>1</categoryId><categoryName>Food</categoryName><translation><meaning>яблоко</meaning><example>I eat an apple every day.</example></translation></WordDto>"
+        }
+      ]
+    },
+    {
+      "name": "http://localhost:8080/api/words JSON",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"englishWord\": \"database\",\n    \"phonetics\": \"[ˈdeɪ.tə.beɪs]\",\n    \"partOfSpeech\": \"noun\",\n    \"categoryId\": 3,\n    \"translations\": [\n      {\n        \"meaning\": \"база данных\",\n        \"example\": \"We store all records in the database.\"\n      }\n    ]\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/words",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "words"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST \"http://localhost:8080/api/words\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Accept: application/json\" \\\n  -d '{\n    \"englishWord\": \"database\",\n    \"phonetics\": \"[ˈdeɪ.tə.beɪs]\",\n    \"partOfSpeech\": \"noun\",\n    \"categoryId\": 3,\n    \"translations\": [\n      {\n        \"meaning\": \"база данных\",\n        \"example\": \"We store all records in the database.\"\n      }\n    ]\n  }'"
+      },
+      "response": [
+        {
+          "name": "http://localhost:8080/api/words JSON",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"englishWord\": \"database\",\n    \"phonetics\": \"[ˈdeɪ.tə.beɪs]\",\n    \"partOfSpeech\": \"noun\",\n    \"categoryId\": 3,\n    \"translations\": [\n      {\n        \"meaning\": \"база данных\",\n        \"example\": \"We store all records in the database.\"\n      }\n    ]\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/words",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "words"
+              ]
+            }
+          },
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 01 Nov 2026 12:54:54 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"id\": null,\n  \"englishWord\": \"database\",\n  \"phonetics\": \"[ˈdeɪ.tə.beɪs]\",\n  \"partOfSpeech\": \"noun\",\n  \"categoryId\": 3,\n  \"categoryName\": null,\n  \"translations\": [\n    {\n      \"meaning\": \"база данных\",\n      \"example\": \"We store all records in the database.\"\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "http://localhost:8080/api/words XML",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/xml"
+          },
+          {
+            "key": "Accept",
+            "value": "application/xml"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<wordDto>\n  <englishWord>dи</englishWord>\n  <phonetics>[ˈdeɪb]</phonetics>\n  <partOfSpeech>noun</partOfSpeech>\n  <categoryId>3</categoryId>\n  <translations>\n    <translation>\n      <meaning>база данных</meaning>\n      <example>We store all records in the db.</example>\n    </translation>\n  </translations>\n</wordDto>",
+          "options": {
+            "raw": {
+              "language": "xml"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/words",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "words"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST \"http://localhost:8080/api/words\" \\\n  -H \"Content-Type: application/xml\" \\\n  -H \"Accept: application/xml\" \\\n  -d '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<wordDto>\n  <englishWord>database</englishWord>\n  <phonetics>[ˈdeɪ.tə.beɪs]</phonetics>\n  <partOfSpeech>noun</partOfSpeech>\n  <categoryId>3</categoryId>\n  <translations>\n    <translation>\n      <meaning>база данных</meaning>\n      <example>We store all records in the database.</example>\n    </translation>\n  </translations>\n</wordDto>'"
+      },
+      "response": [
+        {
+          "name": "http://localhost:8080/api/words XML",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/xml"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<wordDto>\n  <englishWord>dи</englishWord>\n  <phonetics>[ˈdeɪb]</phonetics>\n  <partOfSpeech>noun</partOfSpeech>\n  <categoryId>3</categoryId>\n  <translations>\n    <translation>\n      <meaning>база данных</meaning>\n      <example>We store all records in the db.</example>\n    </translation>\n  </translations>\n</wordDto>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/words",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "words"
+              ]
+            }
+          },
+          "_postman_previewlanguage": "xml",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 01 Nov 2026 12:55:36 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "<WordDto><id/><englishWord>dи</englishWord><phonetics>[ˈdeɪb]</phonetics><partOfSpeech>noun</partOfSpeech><categoryId>3</categoryId><categoryName/></WordDto>"
+        }
+      ]
+    },
+    {
+      "name": "http://localhost:8080/api/words/{id} JSON",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"englishWord\": \"apple\",\n    \"phonetics\": \"[ˈæp.l]\",\n    \"partOfSpeech\": \"noun\",\n    \"categoryId\": 1,\n    \"translations\": [\n      {\n        \"meaning\": \"яблоко (обновлено)\",\n        \"example\": \"An apple a day keeps the doctor away.\"\n      }\n    ]\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/words/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "words",
+            "1"
+          ]
+        },
+        "description": "Generated from cURL: curl -X PUT \"http://localhost:8080/api/words/1\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Accept: application/json\" \\\n  -d '{\n    \"englishWord\": \"apple\",\n    \"phonetics\": \"[ˈæp.l]\",\n    \"partOfSpeech\": \"noun\",\n    \"categoryId\": 1,\n    \"translations\": [\n      {\n        \"meaning\": \"яблоко (обновлено)\",\n        \"example\": \"An apple a day keeps the doctor away.\"\n      }\n    ]\n  }'"
+      },
+      "response": [
+        {
+          "name": "http://localhost:8080/api/words/{id} JSON",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"englishWord\": \"apple\",\n    \"phonetics\": \"[ˈæp.l]\",\n    \"partOfSpeech\": \"noun\",\n    \"categoryId\": 1,\n    \"translations\": [\n      {\n        \"meaning\": \"яблоко (обновлено)\",\n        \"example\": \"An apple a day keeps the doctor away.\"\n      }\n    ]\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/words/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "words",
+                "1"
+              ]
+            }
+          },
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 01 Nov 2026 12:55:46 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"id\": null,\n  \"englishWord\": \"apple\",\n  \"phonetics\": \"[ˈæp.l]\",\n  \"partOfSpeech\": \"noun\",\n  \"categoryId\": 1,\n  \"categoryName\": null,\n  \"translations\": [\n    {\n      \"meaning\": \"яблоко (обновлено)\",\n      \"example\": \"An apple a day keeps the doctor away.\"\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "http://localhost:8080/api/words/{id} XML",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/xml"
+          },
+          {
+            "key": "Accept",
+            "value": "application/xml"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<wordDto>\n  <englishWord>apple</englishWord>\n  <phonetics>[ˈæp.l]</phonetics>\n  <partOfSpeech>noun</partOfSpeech>\n  <categoryId>1</categoryId>\n  <translations>\n    <translation>\n      <meaning>яблоко (обновлено)</meaning>\n      <example>An apple a day keeps the doctor away.</example>\n    </translation>\n  </translations>\n</wordDto>",
+          "options": {
+            "raw": {
+              "language": "xml"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/words/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "words",
+            "1"
+          ]
+        },
+        "description": "Generated from cURL: curl -X PUT \"http://localhost:8080/api/words/1\" \\\n  -H \"Content-Type: application/xml\" \\\n  -H \"Accept: application/xml\" \\\n  -d '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<wordDto>\n  <englishWord>apple</englishWord>\n  <phonetics>[ˈæp.l]</phonetics>\n  <partOfSpeech>noun</partOfSpeech>\n  <categoryId>1</categoryId>\n  <translations>\n    <translation>\n      <meaning>яблоко (обновлено)</meaning>\n      <example>An apple a day keeps the doctor away.</example>\n    </translation>\n  </translations>\n</wordDto>'"
+      },
+      "response": [
+        {
+          "name": "http://localhost:8080/api/words/{id} XML",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/xml"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<wordDto>\n  <englishWord>apple</englishWord>\n  <phonetics>[ˈæp.l]</phonetics>\n  <partOfSpeech>noun</partOfSpeech>\n  <categoryId>1</categoryId>\n  <translations>\n    <translation>\n      <meaning>яблоко (обновлено)</meaning>\n      <example>An apple a day keeps the doctor away.</example>\n    </translation>\n  </translations>\n</wordDto>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/words/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "words",
+                "1"
+              ]
+            }
+          },
+          "_postman_previewlanguage": "xml",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 01 Nov 2026 12:55:51 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "<WordDto><id/><englishWord>apple</englishWord><phonetics>[ˈæp.l]</phonetics><partOfSpeech>noun</partOfSpeech><categoryId>1</categoryId><categoryName/></WordDto>"
+        }
+      ]
+    },
+    {
+      "name": "http://localhost:8080/api/words/{id}",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/words/19",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "words",
+            "19"
+          ]
+        },
+        "description": "Generated from cURL: curl -X DELETE \"http://localhost:8080/api/words/2\" \\\n  -H \"Accept: application/json\""
+      },
+      "response": [
+        {
+          "name": "http://localhost:8080/api/words/{id}",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/words/19",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "words",
+                "19"
+              ]
+            }
+          },
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 01 Nov 2026 12:55:56 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": ""
+        }
+      ]
+    }
+  ]
+}
