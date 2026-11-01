@@ -22,6 +22,11 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
+    // ДОБАВЬ ЭТОТ МЕТОД:
+    public Category findById(Long id) {
+        return categoryRepository.findById(id).orElse(null);
+    }
+
     public Category create(String name, String description) {
         Category category = new Category();
         category.setName(name.trim());
