@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Учет английских слов (Spring Boot)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 24px; color: #333; }
+        h1, h2 { color: #2c3e50; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .form-box { background: #f9f9f9; padding: 15px; border: 1px solid #ddd; margin-bottom: 20px; border-radius: 5px; }
+        input, select, textarea { margin-bottom: 10px; padding: 5px; width: 100%; box-sizing: border-box; }
+        button, .btn { background-color: #4CAF50; color: white; padding: 8px 15px; border: none; cursor: pointer; border-radius: 4px; text-decoration: none; display: inline-block; margin-right: 5px;}
+        .btn-danger { background-color: #f44336; }
+        .btn-edit { background-color: #2196F3; }
+    </style>
+</head>
+<body>
+
+<h1>Учет английских слов (Spring Boot)</h1>
+
+<!-- ================= ПОИСК ================= -->
+<div class="form-box">
+    <form th:action="@{/search}" method="get" style="display: flex; gap: 10px; align-items: center;">
+        <label style="width: auto; margin: 0;"><b>Поиск по слову:</b></label>
+        <input type="text" name="query" th:value="${searchQuery}" placeholder="Например: record" style="width: 300px; margin: 0;"/>
+        <input type="hidden" name="page" value="0"/>
+        <input type="hidden" name="size" value="5"/>
+        <button type="submit">Найти</button>
+        <a th:href="@{/}" class="btn" style="background-color: #9e9e9e;">Сбросить</a>
+    </form>
+</div>
+
+<!-- ================= ТАБЛИЦА СЛОВ ================= -->
+<h2>Слова (Всего: <span th:text="${wordsPage.totalElements}">0</span>)</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Слово</th>
+        <th>Транскрипция</th>
+        <th>Часть речи</th>
+        <th>Категория</th>
+        <th>Значения и примеры</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="w : ${wordsPage.content}">
+        <td th:text="${w.englishWord}"></td>
+        <td th:text="${w.phonetics}"></td>
+        <td th:text="${w.partOfSpeech}"></td>
+        <td th:text="${w.category != null} ? ${w.category.name} : 'Без категории'"></td>
+        <td>
+            <div th:each="t : ${w.translations}">
+                <b th:text="${t.meaning}"></b><br/>
+                <i th:if="${t.example != null}" th:text="'Пример: ' + ${t.example}" style="color: #666;"></i>
+            </div>
+        </td>
+        <td>
+            <a th:href="@{/word/edit/{id}(id=${w.id})}" class="btn btn-edit">Ред.</a>
+            <a th:href="@{/word/delete/{id}(id=${w.id})}" class="btn btn-danger" onclick="return confirm('Удалить слово?')">Удалить</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Пагинация для слов -->
+<div th:if="${wordsPage.totalPages > 1}" style="margin: 20px 0; text-align: center;">
+    <a th:if="${wordsPage.hasPrevious()}"
+       th:href="@{/(page=${wordsPage.number - 1}, size=${wordsPage.size})}"
+       class="btn">← Назад</a>
+
+    <span style="margin: 0 15px; font-weight: bold;">
+        Страница <span th:text="${wordsPage.number + 1}">1</span> из <span th:text="${wordsPage.totalPages}">1</span>
+    </span>
+
+    <a th:if="${wordsPage.hasNext()}"
+       th:href="@{/(page=${wordsPage.number + 1}, size=${wordsPage.size})}"
+       class="btn">Вперед →</a>
+</div>
+
+<!-- ================= ФОРМА ДОБАВЛЕНИЯ/РЕДАКТИРОВАНИЯ СЛОВА ================= -->
+<h2 th:text="${editingWord != null} ? 'Редактирование слова' : 'Новое слово'"></h2>
+<div class="form-box">
+    <form th:action="@{/word/save}" method="post">
+        <input type="hidden" name="id" th:value="${editingWord != null} ? ${editingWord.id} : 0"/>
+
+        <label>Английское слово:</label>
+        <input type="text" name="englishWord" th:value="${editingWord != null} ? ${editingWord.englishWord} : ''" required/>
+
+        <label>Транскрипция:</label>
+        <input type="text" name="phonetics" th:value="${editingWord != null} ? ${editingWord.phonetics} : ''" required/>
+
+        <label>Часть речи:</label>
+        <select name="partOfSpeech">
+            <option value="noun" th:selected="${editingWord != null and editingWord.partOfSpeech == 'noun'}">noun</option>
+            <option value="verb" th:selected="${editingWord != null and editingWord.partOfSpeech == 'verb'}">verb</option>
+            <option value="adjective" th:selected="${editingWord != null and editingWord.partOfSpeech == 'adjective'}">adjective</option>
+            <option value="adverb" th:selected="${editingWord != null and editingWord.partOfSpeech == 'adverb'}">adverb</option>
+            <option value="pronoun" th:selected="${editingWord != null and editingWord.partOfSpeech == 'pronoun'}">pronoun</option>
+            <option value="preposition" th:selected="${editingWord != null and editingWord.partOfSpeech == 'preposition'}">preposition</option>
+            <option value="conjunction" th:selected="${editingWord != null and editingWord.partOfSpeech == 'conjunction'}">conjunction</option>
+            <option value="numeral" th:selected="${editingWord != null and editingWord.partOfSpeech == 'numeral'}">numeral</option>
+            <option value="interjection" th:selected="${editingWord != null and editingWord.partOfSpeech == 'interjection'}">interjection</option>
+            <option value="article" th:selected="${editingWord != null and editingWord.partOfSpeech == 'article'}">article</option>
+        </select>
+
+        <label>Категория:</label>
+        <select name="categoryId" required>
+            <option value="">-- выберите --</option>
+            <!-- ИСПРАВЛЕНО: используем categoriesPage.content вместо categories -->
+            <option th:each="c : ${categoriesPage.content}" th:value="${c.id}" th:text="${c.name}"
+                    th:selected="${editingWord != null and editingWord.category != null and editingWord.category.id == c.id}"></option>
+        </select>
+
+        <label>Основной перевод:</label>
+        <input type="text" name="meaning"
+               th:value="${editingWord != null and editingWord.translations != null and !editingWord.translations.isEmpty()} ? ${editingWord.translations[0].meaning} : ''" required/>
+
+        <label>Пример использования:</label>
+        <textarea name="example" rows="2"
+                  th:text="${editingWord != null and editingWord.translations != null and !editingWord.translations.isEmpty()} ? ${editingWord.translations[0].example} : ''"></textarea>
+
+        <button type="submit">Сохранить</button>
+        <a th:href="@{/}" class="btn" style="background-color: #9e9e9e;">Отмена</a>
+    </form>
+</div>
+
+<!-- ================= ТАБЛИЦА КАТЕГОРИЙ ================= -->
+<h2>Категории (Всего: <span th:text="${categoriesPage.totalElements}">0</span>)</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c : ${categoriesPage.content}">
+        <td th:text="${c.name}"></td>
+        <td th:text="${c.description}"></td>
+        <td>
+            <a th:href="@{/category/delete/{id}(id=${c.id})}" class="btn btn-danger" onclick="return confirm('Удалить категорию?')">Удалить</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Пагинация для категорий -->
+<div th:if="${categoriesPage.totalPages > 1}" style="margin: 20px 0; text-align: center;">
+    <a th:if="${categoriesPage.hasPrevious()}"
+       th:href="@{/(catPage=${categoriesPage.number - 1}, catSize=${categoriesPage.size})}"
+       class="btn">← Назад</a>
+
+    <span style="margin: 0 15px; font-weight: bold;">
+        Страница <span th:text="${categoriesPage.number + 1}">1</span> из <span th:text="${categoriesPage.totalPages}">1</span>
+    </span>
+
+    <a th:if="${categoriesPage.hasNext()}"
+       th:href="@{/(catPage=${categoriesPage.number + 1}, catSize=${categoriesPage.size})}"
+       class="btn">Вперед →</a>
+</div>
+
+<!-- ================= ФОРМА ДОБАВЛЕНИЯ КАТЕГОРИИ ================= -->
+<div class="form-box">
+    <h3>Добавить категорию</h3>
+    <form th:action="@{/category/save}" method="post">
+        <label>Название:</label>
+        <input type="text" name="name" required/>
+        <label>Описание:</label>
+        <textarea name="description" rows="2"></textarea>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+</body>
+</html>
